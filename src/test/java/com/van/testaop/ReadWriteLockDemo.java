@@ -56,7 +56,10 @@ class MyCache {
 /**
  * @author: Van
  * @create: 2019-08-30 14:50
- * @description: 测试
+ * @description: 度写锁测试
+ * 读-读能共存
+ * 读写不能共存
+ * 写写不能共存
  * @program: testaop
  * @version: 1.0
  **/
