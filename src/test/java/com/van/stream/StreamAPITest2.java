@@ -2,10 +2,8 @@ package com.van.stream;
 
 import org.junit.Test;
 
-import java.util.Arrays;
-import java.util.Comparator;
-import java.util.List;
-import java.util.Optional;
+import java.util.*;
+import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 /**
@@ -79,19 +77,14 @@ public class StreamAPITest2 {
     //收集
     @Test
     public void test3() {
-        /*reduce(T identity, BinaryOperator<T> accumulator);
-        可以将流中的元素反复结合起来 得到一个值 返回 T*/
-        List<Integer> list = Arrays.asList(1, 2, 3, 4, 5, 6, 7, 8, 9, 10);
-        Integer reduce = list.stream().reduce(0, Integer::compareTo);
-        System.out.println(reduce);
-
-        /*reduce(BinaryOperator<T> accumulator);
-         * 可以将流中的元素反复结合起来得到一个值 返回Optional
-         * */
+        //collect(Collector c) 将流转换成为其他形式 接收一个collector接口实现 用于给stream中元素做汇总的方法
         List<Emp> emp = TestData.getEmp();
-        Stream<Integer> ageStream = emp.stream().map(Emp::getAge);
-        Optional<Integer> sunAge = ageStream.reduce(Integer::sum);//方法引用
-        Optional<Integer> sunAge1 = ageStream.reduce((a1, a2) -> a1 + a2);//lambda写法
-        System.out.println(sunAge);
+        List<Emp> collect = emp.stream().filter(e -> e.getAge() > 5).collect(Collectors.toList());
+        collect.forEach(System.out::println);
+
+        Set<Emp> empSet = emp.stream().filter(e -> e.getAge() > 5).collect(Collectors.toSet());
+        empSet.forEach(System.out::println);
+
+
     }
 }

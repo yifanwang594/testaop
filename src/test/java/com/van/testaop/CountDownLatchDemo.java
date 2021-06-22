@@ -27,6 +27,8 @@ public class CountDownLatchDemo {
                 countDownLatch.countDown();
             }, CountEnum.forEach_CountryEnum(i).getRetMessage()).start();
         }
+        new Thread(() -> {
+        }).start();
         //解决方法
         countDownLatch.await();
 //        countDownLatch.await(3000, TimeUnit.MILLISECONDS);
