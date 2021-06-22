@@ -1,6 +1,6 @@
 package com.van.stream;
 
-import com.van.proxy.T;
+
 import org.junit.Test;
 
 import java.sql.SQLOutput;
